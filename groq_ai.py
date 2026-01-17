@@ -9,7 +9,7 @@ try:
 except:
     GROQ_API_KEY = ""
 
-bot_name = "Groq AI"
+bot_name = "Crystaline"
 
 # Initialize Groq client
 def get_groq_client():
@@ -452,7 +452,7 @@ with st.sidebar:
 # Main chat area
 if not st.session_state.messages:
     # Welcome screen
-    st.markdown(f'<div class="header-title">⚡ {bot_name} AI Assistant ⚡</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="header-title">⚡ {bot_name} ⚡</div>', unsafe_allow_html=True)
     
     st.markdown("### 🎯 What can I help you with?")
     
