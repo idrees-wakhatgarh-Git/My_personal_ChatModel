@@ -1,5 +1,4 @@
 import streamlit as st
-from datetime import datetime
 import random
 from groq import Groq
 
@@ -9,7 +8,7 @@ try:
 except:
     GROQ_API_KEY = ""
 
-bot_name = "Crystaline"
+bot_name = "Groq AI"
 
 # Initialize Groq client
 def get_groq_client():
@@ -452,7 +451,7 @@ with st.sidebar:
 # Main chat area
 if not st.session_state.messages:
     # Welcome screen
-    st.markdown(f'<div class="header-title">⚡ {bot_name} ⚡</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="header-title">⚡ {bot_name} AI Assistant ⚡</div>', unsafe_allow_html=True)
     
     st.markdown("### 🎯 What can I help you with?")
     
@@ -477,14 +476,12 @@ if not st.session_state.messages:
                 prompt = f"Help me with: {suggestion['title']}"
                 st.session_state.messages.append({
                     "role": "user",
-                    "content": prompt,
-                    "timestamp": datetime.now().strftime("%I:%M %p")
+                    "content": prompt
                 })
                 response = get_response(prompt)
                 st.session_state.messages.append({
                     "role": "assistant",
-                    "content": response,
-                    "timestamp": datetime.now().strftime("%I:%M %p")
+                    "content": response
                 })
                 st.session_state.total_messages += 2
                 st.rerun()
@@ -496,7 +493,6 @@ else:
     for message in st.session_state.messages:
         role = message["role"]
         content = html.escape(message["content"]).replace('\n', '<br>')
-        timestamp = message["timestamp"]
         avatar = "👤" if role == "user" else "🤖"
         
         if role == "user":
@@ -504,7 +500,6 @@ else:
             <div class="message-row user">
                 <div class="message-bubble user">
                     <div class="message-content">{content}</div>
-                    <div class="message-time">{timestamp}</div>
                 </div>
                 <div class="message-avatar">{avatar}</div>
             </div>
@@ -515,7 +510,6 @@ else:
                 <div class="message-avatar">{avatar}</div>
                 <div class="message-bubble assistant">
                     <div class="message-content">{content}</div>
-                    <div class="message-time">{timestamp}</div>
                 </div>
             </div>
             '''
@@ -524,25 +518,20 @@ else:
 
 # Chat input
 if prompt := st.chat_input(f"Message {bot_name}..."):
-    current_time = datetime.now().strftime("%I:%M %p")
-    
     # Add user message
     st.session_state.messages.append({
         "role": "user",
-        "content": prompt,
-        "timestamp": current_time
+        "content": prompt
     })
     st.session_state.total_messages += 1
     
     # Get bot response
     response = get_response(prompt)
-    bot_time = datetime.now().strftime("%I:%M %p")
     
     # Add bot message
     st.session_state.messages.append({
         "role": "assistant",
-        "content": response,
-        "timestamp": bot_time
+        "content": response
     })
     st.session_state.total_messages += 1
     
