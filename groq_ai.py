@@ -1,5 +1,4 @@
 import streamlit as st
-import random
 from groq import Groq
 
 # Groq API Configuration
@@ -63,8 +62,6 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 if "total_messages" not in st.session_state:
     st.session_state.total_messages = 0
-if "session_start" not in st.session_state:
-    st.session_state.session_start = datetime.now()
 if "theme_style" not in st.session_state:
     st.session_state.theme_style = "cyberpunk"
 if "groq_api_key" not in st.session_state:
@@ -410,10 +407,6 @@ with st.sidebar:
         user_msgs = len([m for m in st.session_state.messages if m["role"] == "user"])
         st.metric("Your Msgs", user_msgs)
     
-    duration = datetime.now() - st.session_state.session_start
-    minutes = int(duration.total_seconds() / 60)
-    st.metric("Session Time", f"{minutes} min")
-    
     st.markdown("---")
     
     # Quick actions
@@ -422,7 +415,6 @@ with st.sidebar:
     if st.button("🔄 New Chat", use_container_width=True):
         st.session_state.messages = []
         st.session_state.total_messages = 0
-        st.session_state.session_start = datetime.now()
         st.rerun()
     
     if st.button("💾 Export Chat", use_container_width=True):
@@ -434,7 +426,7 @@ with st.sidebar:
             st.download_button(
                 "Download Chat",
                 chat_export,
-                file_name=f"chat_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt",
+                file_name="chat_history.txt",
                 mime="text/plain",
                 use_container_width=True
             )
