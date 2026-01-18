@@ -348,7 +348,7 @@ st.markdown(f"""
 
 # Sidebar
 with st.sidebar:
-    st.markdown(f'<h1>🚀 {bot_name}</h1>', unsafe_allow_html=True)
+    st.markdown(f'<h1>{bot_name}</h1>', unsafe_allow_html=True)
     st.markdown(f'<p><span class="status-dot"></span>Online & Ready</p>', unsafe_allow_html=True)
     
     st.markdown("---")
@@ -443,9 +443,9 @@ with st.sidebar:
 # Main chat area
 if not st.session_state.messages:
     # Welcome screen
-    st.markdown(f'<div class="header-title">⚡ {bot_name} ⚡</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="header-title">{bot_name}</div>', unsafe_allow_html=True)
     
-    st.markdown("### 🎯 What can I help you with?")
+    st.markdown("###What can I help you with?")
     
     suggestions = [
         {"icon": "🧠", "title": "Explain Concepts", "desc": "Learn about complex topics"},
