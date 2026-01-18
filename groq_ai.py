@@ -445,7 +445,7 @@ if not st.session_state.messages:
     # Welcome screen
     st.markdown(f'<div class="header-title">{bot_name}</div>', unsafe_allow_html=True)
     
-    st.markdown("###What can I help you with?")
+    st.markdown("### What can I help you with?")
     
     suggestions = [
         {"icon": "🧠", "title": "Explain Concepts", "desc": "Learn about complex topics"},
