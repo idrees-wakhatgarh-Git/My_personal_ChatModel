@@ -52,7 +52,7 @@ def get_response(prompt):
 # Page configuration
 st.set_page_config(
     page_title=f"Chat with {bot_name}",
-    page_icon="🚀",
+    page_icon="🔮",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -377,11 +377,11 @@ with st.sidebar:
     # Theme selector
     st.markdown("### 🎨 Choose Your Vibe")
     theme_options = {
-        "🌌 Cyberpunk": "cyberpunk",
-        "🌈 Gradient Dream": "gradient",
-        "💻 Retro Terminal": "terminal",
-        "💬 Bubble Chat": "bubble",
-        "📊 Professional": "professional"
+        "Cyberpunk": "cyberpunk",
+        "Gradient Dream": "gradient",
+        "Retro Terminal": "terminal",
+        "Bubble Chat": "bubble",
+        "Professional": "professional"
     }
     
     selected_theme = st.radio(
